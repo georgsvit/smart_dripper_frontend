@@ -8,6 +8,7 @@ class Routes {
 
   static const String doctorsLogin = doctors + "login";
   static const String doctorsRegister = doctors + "register";
-
+  static const String adminsLogin = admins + "login";
+  static const String adminsRegister = admins + "register";
 
 }

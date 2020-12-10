@@ -5,6 +5,7 @@ import 'package:smart_dripper_frontend/DTO/Responses/admin_response.dart';
 import 'package:smart_dripper_frontend/DTO/Responses/doctor_response.dart';
 import 'package:http/http.dart' as http;
 import 'package:smart_dripper_frontend/DTO/routes.dart';
+import 'package:smart_dripper_frontend/models/detailed_user.dart';
 import 'package:smart_dripper_frontend/utils/session.dart';
 
 Future<DoctorResponse> loginDoctor(String login, String password) async {
@@ -18,9 +19,10 @@ Future<DoctorResponse> loginDoctor(String login, String password) async {
   if (response.statusCode == 200) {
     var doctor = DoctorResponse.fromJson(jsonDecode(response.body));
     saveToken(doctor.token);
+    saveUserData(new DetailedUser(doctor.name, doctor.surname, doctor.role));
     return doctor;
   } else {
-    throw Exception('Failed to login.');
+    throw Exception(jsonDecode(response.body)['message']);
   }
 }
 

@@ -43,7 +43,7 @@ Future registerDoctor(
   if (response.statusCode == 200) {
     print(response);
   } else {
-    throw Exception('Failed to login.');
+    throw Exception(jsonDecode(response.body)['message']);
   }
 }
 
@@ -60,7 +60,7 @@ Future<AdminResponse> loginAdmin(String login, String password) async {
     saveToken(admin.token);
     return admin;
   } else {
-    throw Exception('Failed to login.');
+    throw Exception(jsonDecode(response.body)['message']);
   }
 }
 
@@ -84,7 +84,7 @@ Future registerAdmin(String login, String password, String name, String surname)
     if (response.statusCode == 200) {
       print(response);
     } else {
-      throw Exception('Failed to login.');
+      throw Exception(jsonDecode(response.body)['message']);
     }
   } else {
     throw Exception('Token is null.');

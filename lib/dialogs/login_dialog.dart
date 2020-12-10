@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_dripper_frontend/dto/Responses/doctor_response.dart';
 import 'package:smart_dripper_frontend/utils/authentication.dart';
@@ -69,8 +70,11 @@ class _AnimatedProgressIndicatorState extends State<AnimatedProgressIndicator>
 }
 
 class _LoginDialogState extends State<LoginDialog> {
-  final _loginTextController = TextEditingController();
-  final _passwordTextController = TextEditingController();
+  final _doctorLoginTextController = TextEditingController();
+  final _doctorPasswordTextController = TextEditingController();
+  final _adminLoginTextController = TextEditingController();
+  final _adminPasswordTextController = TextEditingController();
+
 
   var token;
 
@@ -80,13 +84,15 @@ class _LoginDialogState extends State<LoginDialog> {
   void _updateFormProgress() {
     var progress = 0.0;
     var controllers = [
-      _loginTextController,
-      _passwordTextController,
+      _doctorLoginTextController,
+      _doctorPasswordTextController,
+      _adminLoginTextController,
+      _adminPasswordTextController 
     ];
 
     for (var controller in controllers) {
       if (controller.value.text.isNotEmpty) {
-        progress += 1 / controllers.length;
+        progress += 2 / controllers.length;
       }
     }
 
@@ -101,9 +107,22 @@ class _LoginDialogState extends State<LoginDialog> {
     });
   }
 
-  void _showProfilePage() async {
+  void _loginDoctor() async {
     try {
-      var response = await loginDoctor(_loginTextController.text, _passwordTextController.text).then((value) => value.token != "" ? token = value.token : token = "");    
+      var response = await loginDoctor(_doctorLoginTextController.text, _doctorPasswordTextController.text).then((value) => value.token != "" ? token = value.token : token = "");    
+      print(token);
+      if (token != null) {
+        Navigator.of(context).pushNamed('/profile');
+      }
+    } catch (e) {
+      print(e);
+      _setError(e.toString());
+    }
+  }
+
+  void _loginAdmin() async {
+    try {
+      var response = await loginAdmin(_adminLoginTextController.text, _adminPasswordTextController.text).then((value) => value.token != "" ? token = value.token : token = "");    
       print(token);
       if (token != null) {
         Navigator.of(context).pushNamed('/profile');
@@ -121,6 +140,7 @@ class _LoginDialogState extends State<LoginDialog> {
         onChanged: _updateFormProgress,
         child: SizedBox(
           width: 400,
+          height: 300,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -130,42 +150,113 @@ class _LoginDialogState extends State<LoginDialog> {
               Visibility(
                 visible: error != "",
                 child: Text(error, style: Theme.of(context).textTheme.headline6,),
-              ),              
-              Padding(
-                padding: EdgeInsets.all(8),
-                child: TextFormField(
-                  controller: _loginTextController,
-                  decoration: InputDecoration(hintText: 'Login'),
-                ),
               ),
-              Padding(
-                padding: EdgeInsets.all(8),
-                child: TextFormField(
-                  controller: _passwordTextController,
-                  decoration: InputDecoration(hintText: 'Password'),
-                  obscureText: true,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(8),
-                child: TextButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
-                      return states.contains(MaterialState.disabled) ? Colors.grey[200] : Colors.green;
-                    }),
-                    foregroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
-                      return states.contains(MaterialState.disabled) ? Colors.grey : Colors.white;
-                    })
+              Container(
+                child: DefaultTabController(
+                  length: 2,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        child: TabBar(
+                          tabs: [
+                            Tab(
+                              text: 'Doctor',
+                            ),
+                            Tab(
+                              text: 'Admin',
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: 175,
+                        child: TabBarView(                        
+                          children: [
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: TextFormField(
+                                    controller: _doctorLoginTextController,
+                                    decoration: InputDecoration(hintText: 'Login'),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: TextFormField(
+                                    controller: _doctorPasswordTextController,
+                                    decoration: InputDecoration(hintText: 'Password'),
+                                    obscureText: true,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: TextButton(
+                                    style: ButtonStyle(
+                                      backgroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
+                                        return states.contains(MaterialState.disabled) ? Colors.grey[200] : Colors.green;
+                                      }),
+                                      foregroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
+                                        return states.contains(MaterialState.disabled) ? Colors.grey : Colors.white;
+                                      })
+                                    ),
+                                    child: Text('Log In'),
+                                    onPressed: _formProgress == 1 ? _loginDoctor : null,
+                                  ),
+                                ),              
+                              ],
+                            ),
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: TextFormField(
+                                    controller: _adminLoginTextController,
+                                    decoration: InputDecoration(hintText: 'Login'),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: TextFormField(
+                                    controller: _adminPasswordTextController,
+                                    decoration: InputDecoration(hintText: 'Password'),
+                                    obscureText: true,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(8, 8, 8, 2),
+                                  child: TextButton(
+                                    style: ButtonStyle(
+                                      backgroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
+                                        return states.contains(MaterialState.disabled) ? Colors.grey[200] : Colors.green;
+                                      }),
+                                      foregroundColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
+                                        return states.contains(MaterialState.disabled) ? Colors.grey : Colors.white;
+                                      })
+                                    ),
+                                    child: Text('Log In'),
+                                    onPressed: _formProgress == 1 ? _loginAdmin : null,
+                                  ),
+                                ),              
+                              ],
+                            ),
+                          ]
+                        ),
+                      )
+                    ] 
                   ),
-                  child: Text('Log In'),
-                  onPressed: _formProgress == 1 ? _showProfilePage : null,
                 ),
-              ),              
+              )
             ],
-          ),
+          )
         ),
       )
-
     );
   }
 }

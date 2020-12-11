@@ -112,7 +112,7 @@ class _LoginDialogState extends State<LoginDialog> {
       var response = await loginDoctor(_doctorLoginTextController.text, _doctorPasswordTextController.text).then((value) => value.token != "" ? token = value.token : token = "");    
       print(token);
       if (token != null) {
-        Navigator.of(context).pushNamed('/profile');
+        Navigator.of(context).pushNamedAndRemoveUntil("/profile", (route) => false);
       }
     } catch (e) {
       print(e);
@@ -125,7 +125,7 @@ class _LoginDialogState extends State<LoginDialog> {
       var response = await loginAdmin(_adminLoginTextController.text, _adminPasswordTextController.text).then((value) => value.token != "" ? token = value.token : token = "");    
       print(token);
       if (token != null) {
-        Navigator.of(context).pushNamed('/profile');
+        Navigator.of(context).pushNamedAndRemoveUntil("/profile", (route) => false);
       }
     } catch (e) {
       print(e);
@@ -149,7 +149,7 @@ class _LoginDialogState extends State<LoginDialog> {
               Text('Log In', style: Theme.of(context).textTheme.headline4),
               Visibility(
                 visible: error != "",
-                child: Text(error, style: Theme.of(context).textTheme.headline6,),
+                child: Text(error, style: TextStyle(color: Colors.red, fontSize: 18),),
               ),
               Container(
                 child: DefaultTabController(

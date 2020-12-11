@@ -58,6 +58,7 @@ Future<AdminResponse> loginAdmin(String login, String password) async {
   if (response.statusCode == 200) {
     var admin = AdminResponse.fromJson(jsonDecode(response.body));
     saveToken(admin.token);
+    saveUserData(new DetailedUser(admin.name, admin.surname, admin.role));
     return admin;
   } else {
     throw Exception(jsonDecode(response.body)['message']);

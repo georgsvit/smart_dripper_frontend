@@ -102,7 +102,7 @@ Future<ApiStatus> deleteManufacturer(String id) async {
   }
 }
 
-Future<ManufacturerResponse> editManufacturer(String id, ManufacturerResponse manufacturer) async {
+Future<ApiStatus> editManufacturer(String id, ManufacturerResponse manufacturer) async {
   final token = await fetchToken();
 
   var uri = Uri.encodeFull(Routes.manufacturersEdit + id);
@@ -116,8 +116,7 @@ Future<ManufacturerResponse> editManufacturer(String id, ManufacturerResponse ma
     body: jsonEncode(<String, dynamic>{'Name': manufacturer.name, 'Country': manufacturer.country})
   );
   if (response.statusCode == 200) {
-    print(ManufacturerResponse.fromJson(json.decode(response.body)));
-    return ManufacturerResponse.fromJson(json.decode(response.body));
+    return ApiStatus.success;
   } else {
     print(response.statusCode);
     if (response.statusCode > 400) {

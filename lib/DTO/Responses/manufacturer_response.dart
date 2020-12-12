@@ -8,4 +8,7 @@ class ManufacturerResponse {
   factory ManufacturerResponse.fromJson(Map<String, dynamic> json) {
     return new ManufacturerResponse(json['id'], json['name'], json['country']);
   }
+
+  String getName() => 'Name: $name';
+  String getCountry() => 'Country: $country';
 }

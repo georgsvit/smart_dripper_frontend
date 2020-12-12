@@ -93,7 +93,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   style: Theme.of(context).textTheme.headline6
                 ),
               ),         
-              ActionWidget('Manufacturer', 'Look and edit information about medicaments manufacturers', '/'),                
+              ActionWidget('Manufacturer', 'Look and edit information about medicaments manufacturers', '/manufacturers'),                
               ActionWidget('Manufacturer', 'Look and edit information about medicaments manufacturers', '/'),                
               ActionWidget('Manufacturer', 'Look and edit information about medicaments manufacturers', '/'),                
               ActionWidget('Manufacturer', 'Look and edit information about medicaments manufacturers', '/'),                

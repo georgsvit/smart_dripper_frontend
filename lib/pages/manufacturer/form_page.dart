@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_dripper_frontend/dto/Responses/manufacturer_response.dart';
 import 'package:smart_dripper_frontend/utils/api_status.dart';
+import 'package:smart_dripper_frontend/utils/localization.dart';
 import 'package:smart_dripper_frontend/utils/services/manufacturer_service.dart';
 
 class ManufacturerFormPage extends StatefulWidget { 
@@ -91,14 +92,14 @@ class _ManufacturerFormState extends State<ManufacturerFormPage> {
                 padding: EdgeInsets.all(8),
                 child: TextFormField(
                   controller: _nameTextController,
-                  decoration: InputDecoration(hintText: 'Name'),
+                  decoration: InputDecoration(hintText: AppLocalization.of(context).translate('name_title')),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.all(8),
                 child: TextFormField(
                   controller: _countryTextController,
-                  decoration: InputDecoration(hintText: 'Country'),
+                  decoration: InputDecoration(hintText: AppLocalization.of(context).translate('country')),
                 ),
               ),
               Padding(
@@ -112,7 +113,7 @@ class _ManufacturerFormState extends State<ManufacturerFormPage> {
                       return states.contains(MaterialState.disabled) ? Colors.grey : Colors.white;
                     })
                   ),
-                  child: widget.manufacturer.id == "" ? Text('Create') : Text('Save'),
+                  child: widget.manufacturer.id == "" ? Text(AppLocalization.of(context).translate('create_label')) : Text(AppLocalization.of(context).translate('save_label')),
                   onPressed: _formProgress == 1 ? _save : null,
                 ),
               ),              

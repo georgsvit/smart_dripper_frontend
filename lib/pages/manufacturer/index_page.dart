@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_dripper_frontend/dto/Responses/manufacturer_response.dart';
 import 'package:smart_dripper_frontend/pages/manufacturer/form_page.dart';
 import 'package:smart_dripper_frontend/utils/api_status.dart';
+import 'package:smart_dripper_frontend/utils/localization.dart';
 import 'package:smart_dripper_frontend/utils/services/manufacturer_service.dart';
 
 class ManufacturersIndexPage extends StatefulWidget { 
@@ -32,7 +33,7 @@ class _ManufacturersIndexState extends State<ManufacturersIndexPage> {
     final scaffold = Scaffold.of(context);
     scaffold.showSnackBar(
       SnackBar(
-        content: const Text('Added to favorite'),        
+        content: const Text(''),        
       ),
     );
   }
@@ -64,7 +65,7 @@ class _ManufacturersIndexState extends State<ManufacturersIndexPage> {
     } else {
       return Scaffold(
         appBar: AppBar(
-          title: Text("Manufacturers"),                          
+          title: Text(AppLocalization.of(context).translate('manufacturer_label')),                          
         ),
         body: Center(
           child: Column(
@@ -73,13 +74,13 @@ class _ManufacturersIndexState extends State<ManufacturersIndexPage> {
             children: <Widget>[
               Center(
                 child: Text(
-                  'List of manufacturers',
+                  AppLocalization.of(context).translate('manufacturers_list_label'),
                   style: Theme.of(context).textTheme.headline3
                 ),
               ), 
               Center(
                 child: RaisedButton(
-                  child: Text("Create new"),
+                  child: Text(AppLocalization.of(context).translate('create_label')),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0)
                   ),
@@ -136,17 +137,17 @@ class _ManufacturersIndexState extends State<ManufacturersIndexPage> {
                                     context: context,
                                     builder: (BuildContext context) {
                                       return AlertDialog(
-                                        title: Text("Delete?"),
-                                        content: Text("Are you really want to delete this element?\nAll data will be removed"),
+                                        title: Text(AppLocalization.of(context).translate('delete_label')),
+                                        content: Text(AppLocalization.of(context).translate('delete_text')),
                                         actions: <Widget>[
                                           FlatButton(
-                                            child: Text("No"),
+                                            child: Text(AppLocalization.of(context).translate('no_option')),
                                             onPressed: () {
                                               Navigator.of(context).pop();
                                             },
                                           ),
                                           FlatButton(
-                                            child: Text("Yes"),
+                                            child: Text(AppLocalization.of(context).translate('yes_option')),
                                             onPressed: () {
                                               _deleteElement(element.id);
                                             },

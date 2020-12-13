@@ -8,10 +8,11 @@ import 'package:smart_dripper_frontend/utils/api_status.dart';
 import 'package:smart_dripper_frontend/utils/session.dart';
 
 Future<List<ManufacturerResponse>> getAllManufacturers() async {
+  var locale = await fetchLocaleAsString();
   final token = await fetchToken();
   
   final http.Response response = await http.get(
-    Routes.manufacturersGetAll,
+    Routes.manufacturersGetAll + '?culture=$locale',
     headers: <String, String>{
       HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8',
       HttpHeaders.authorizationHeader: 'Bearer $token'
@@ -27,9 +28,10 @@ Future<List<ManufacturerResponse>> getAllManufacturers() async {
 }
 
 Future<ManufacturerResponse> getManufacturer(String id) async {
+  var locale = await fetchLocaleAsString();
   final token = await fetchToken();
 
-  var uri = Uri.encodeFull(Routes.manufacturersGet + id);
+  var uri = Uri.encodeFull(Routes.manufacturersGet + id) + '?culture=$locale';
 
   final http.Response response = await http.get(
     uri,
@@ -56,9 +58,10 @@ Future<ManufacturerResponse> getManufacturer(String id) async {
 }
 
 Future<ApiStatus> createManufacturer(ManufacturerResponse manufacturer) async {
+  var locale = await fetchLocaleAsString();
   final token = await fetchToken();
 
-  var uri = Uri.encodeFull(Routes.manufacturersCreate);
+  var uri = Uri.encodeFull(Routes.manufacturersCreate) + '?culture=$locale';
 
   final http.Response response = await http.post(
     uri,
@@ -80,9 +83,10 @@ Future<ApiStatus> createManufacturer(ManufacturerResponse manufacturer) async {
 }
 
 Future<ApiStatus> deleteManufacturer(String id) async {
+  var locale = await fetchLocaleAsString();
   final token = await fetchToken();
 
-  var uri = Uri.encodeFull(Routes.manufacturersDelete + id);
+  var uri = Uri.encodeFull(Routes.manufacturersDelete + id) + '?culture=$locale';
 
   final http.Response response = await http.delete(
     uri,
@@ -103,9 +107,10 @@ Future<ApiStatus> deleteManufacturer(String id) async {
 }
 
 Future<ApiStatus> editManufacturer(String id, ManufacturerResponse manufacturer) async {
+  var locale = await fetchLocaleAsString();
   final token = await fetchToken();
 
-  var uri = Uri.encodeFull(Routes.manufacturersEdit + id);
+  var uri = Uri.encodeFull(Routes.manufacturersEdit + id) + '?culture=$locale';
 
   final http.Response response = await http.patch(
     uri,

@@ -1,7 +1,6 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_dripper_frontend/dto/Responses/doctor_response.dart';
 import 'package:smart_dripper_frontend/utils/authentication.dart';
+import 'package:smart_dripper_frontend/utils/localization.dart';
 
 class LoginDialog extends StatefulWidget {
   @override
@@ -146,7 +145,7 @@ class _LoginDialogState extends State<LoginDialog> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               AnimatedProgressIndicator(value: _formProgress),
-              Text('Log In', style: Theme.of(context).textTheme.headline4),
+              Text(AppLocalization.of(context).translate('log_in'), style: Theme.of(context).textTheme.headline4),
               Visibility(
                 visible: error != "",
                 child: Text(error, style: TextStyle(color: Colors.red, fontSize: 18),),
@@ -162,10 +161,10 @@ class _LoginDialogState extends State<LoginDialog> {
                         child: TabBar(
                           tabs: [
                             Tab(
-                              text: 'Doctor',
+                              text: AppLocalization.of(context).translate('doctor_label'),
                             ),
                             Tab(
-                              text: 'Admin',
+                              text: AppLocalization.of(context).translate('admin_label'),
                             ),
                           ],
                         ),
@@ -182,14 +181,14 @@ class _LoginDialogState extends State<LoginDialog> {
                                   padding: EdgeInsets.all(8),
                                   child: TextFormField(
                                     controller: _doctorLoginTextController,
-                                    decoration: InputDecoration(hintText: 'Login'),
+                                    decoration: InputDecoration(hintText: AppLocalization.of(context).translate('login')),
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.all(8),
                                   child: TextFormField(
                                     controller: _doctorPasswordTextController,
-                                    decoration: InputDecoration(hintText: 'Password'),
+                                    decoration: InputDecoration(hintText: AppLocalization.of(context).translate('password')),
                                     obscureText: true,
                                   ),
                                 ),
@@ -204,7 +203,7 @@ class _LoginDialogState extends State<LoginDialog> {
                                         return states.contains(MaterialState.disabled) ? Colors.grey : Colors.white;
                                       })
                                     ),
-                                    child: Text('Log In'),
+                                    child: Text(AppLocalization.of(context).translate('log_in')),
                                     onPressed: _formProgress == 1 ? _loginDoctor : null,
                                   ),
                                 ),              
@@ -218,14 +217,14 @@ class _LoginDialogState extends State<LoginDialog> {
                                   padding: EdgeInsets.all(8),
                                   child: TextFormField(
                                     controller: _adminLoginTextController,
-                                    decoration: InputDecoration(hintText: 'Login'),
+                                    decoration: InputDecoration(hintText: AppLocalization.of(context).translate('login')),
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.all(8),
                                   child: TextFormField(
                                     controller: _adminPasswordTextController,
-                                    decoration: InputDecoration(hintText: 'Password'),
+                                    decoration: InputDecoration(hintText: AppLocalization.of(context).translate('password')),
                                     obscureText: true,
                                   ),
                                 ),
@@ -240,7 +239,7 @@ class _LoginDialogState extends State<LoginDialog> {
                                         return states.contains(MaterialState.disabled) ? Colors.grey : Colors.white;
                                       })
                                     ),
-                                    child: Text('Log In'),
+                                    child: Text(AppLocalization.of(context).translate('log_in')),
                                     onPressed: _formProgress == 1 ? _loginAdmin : null,
                                   ),
                                 ),              

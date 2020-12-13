@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_dripper_frontend/models/detailed_user.dart';
+import 'package:smart_dripper_frontend/utils/localization.dart';
 import 'package:smart_dripper_frontend/utils/session.dart';
 import 'package:smart_dripper_frontend/widgets/action_widget.dart';
 
@@ -30,7 +31,7 @@ class _ProfilePageState extends State<ProfilePage> {
     } else {
       return Scaffold(
         appBar: AppBar(
-          title: Text("Profile"),     
+          title: Text(AppLocalization.of(context).translate('profile_page_title')),     
           actions: [
             Padding(
               padding: EdgeInsets.all(10.0),
@@ -42,17 +43,17 @@ class _ProfilePageState extends State<ProfilePage> {
                 onPressed: () => {
                   showDialog(context: context, builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text("Log Out?"),
-                      content: Text("Are you really want to leave?"),
+                      title: Text(AppLocalization.of(context).translate('log_out')),
+                      content: Text(AppLocalization.of(context).translate('log_out_text')),
                       actions: <Widget>[
                         FlatButton(
-                          child: Text("No"),
+                          child: Text(AppLocalization.of(context).translate('no_option')),
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
                         ),
                         FlatButton(
-                          child: Text("Yes"),
+                          child: Text(AppLocalization.of(context).translate('yes_option')),
                           onPressed: () {                                                        
                             Navigator.of(context).pop();
                             Navigator.of(context).pushNamedAndRemoveUntil("/", (route) => false);
@@ -73,27 +74,27 @@ class _ProfilePageState extends State<ProfilePage> {
             children: <Widget>[
               Center(
                 child: Text(
-                  'Profile Section',
+                  AppLocalization.of(context).translate('profile_section_label'),
                   style: Theme.of(context).textTheme.headline6
                 ),
               ),              
               Text(
-                'Name: ${user.name}',
+                AppLocalization.of(context).translate('name') + ': ${user.name}',
               ),
               Text(
-                'Surname: ${user.surname}',
+                AppLocalization.of(context).translate('surname') + ': ${user.surname}',
               ),
               Text(
-                'Role: ${user.role}',
+                AppLocalization.of(context).translate('role') + ': ${user.role}',
               ),
               Divider(thickness: 0.5, color: Colors.black54,),
               Center(
                 child: Text(
-                  'Actions',
+                  AppLocalization.of(context).translate('action_section_label'),
                   style: Theme.of(context).textTheme.headline6
                 ),
               ),         
-              ActionWidget('Manufacturer', 'Look and edit information about medicaments manufacturers', '/manufacturers'),                
+              ActionWidget(AppLocalization.of(context).translate('manufacturer_label'), AppLocalization.of(context).translate('manufacturer_description'), '/manufacturers'),                
               ActionWidget('Manufacturer', 'Look and edit information about medicaments manufacturers', '/'),                
               ActionWidget('Manufacturer', 'Look and edit information about medicaments manufacturers', '/'),                
               ActionWidget('Manufacturer', 'Look and edit information about medicaments manufacturers', '/'),                

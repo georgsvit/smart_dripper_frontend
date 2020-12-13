@@ -1,0 +1,32 @@
+{
+    "title": "Smart Dripper",
+    "main_page_title": "Main page",
+    "profile_page_title": "Profile",
+    "sign_in": "Sign In",
+    "log_in": "Log In",
+    "log_out": "Log Out",
+    "log_out_text": "Are you really want to leave?",
+    "no_option": "No",
+    "yes_option": "Yes",
+    "profile_section_label": "Profile Section",
+    "action_section_label": "Actions Section",
+    "name": "Name",
+    "surname": "Surname",
+    "role": "Role",
+    "doctor_label": "Doctor",
+    "admin_label": "Admin",
+    "login": "Login",
+    "password": "Password",
+    "manufacturer_label": "Manufacturers",
+    "manufacturer_description": "Look and edit information about medicaments manufacturers",
+    "manufacturers_list_label": "List of manufacturers",
+    "create_label": "Create new",
+    "edit_label": "Edit",
+    "delete_label": "Delete",
+    "save_label": "Save",
+    "delete_text": "Are you really want to delete this element?\nAll data will be removed",
+    "country": "Country",
+    "name_title": "Name"
+    
+
+}

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_dripper_frontend/dto/Responses/manufacturer_response.dart';
+import 'package:smart_dripper_frontend/utils/services/manufacturer_service.dart';
 
 class ActionWidget extends StatelessWidget {
 
@@ -27,6 +29,10 @@ class ActionWidget extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.arrow_forward),
             onPressed: () => {
+              //getManufacturer("157f9f06-5128-42b4-b916-94554fef15ef"),
+              //createManufacturer(new ManufacturerResponse("", "Medical Company #2", "Ukraine")),
+              //deleteManufacturer("310f3c22-d08c-406c-aaef-c257f6bec480"),
+              //editManufacturer("157f9f06-5128-42b4-b916-94554fef15ef", new ManufacturerResponse("", "Medical Company #4", "Ukraine")),
               Navigator.of(context).pushNamed(path)
             },
             hoverColor: Colors.green,

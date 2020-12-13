@@ -30,3 +30,11 @@ Future<DetailedUser> fetchUser() async {
     prefs.getString('user_role')
   );
 }
+
+fetchLocaleAsString() async {
+  var prefs = await SharedPreferences.getInstance();
+  if (prefs.getString('countryCode') == null) {
+    return 'ua';
+  }
+  return prefs.getString('countryCode').toLowerCase();
+}

@@ -114,8 +114,8 @@ class _ManufacturersIndexState extends State<ManufacturersIndexPage> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(element.getName(), style: TextStyle(fontSize: 20),),
-                                  Text(element.getCountry()),
+                                  Text(AppLocalization.of(context).translate('name_title') + element.getName(), style: TextStyle(fontSize: 20),),
+                                  Text(AppLocalization.of(context).translate('country') + element.getCountry()),
                                 ],
                               ),
                               IconButton(

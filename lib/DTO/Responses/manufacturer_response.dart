@@ -9,6 +9,6 @@ class ManufacturerResponse {
     return new ManufacturerResponse(json['id'], json['name'], json['country']);
   }
 
-  String getName() => 'Name: $name';
-  String getCountry() => 'Country: $country';
+  String getName() => '$name';
+  String getCountry() => '$country';
 }

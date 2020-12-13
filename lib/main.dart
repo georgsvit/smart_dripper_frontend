@@ -7,6 +7,8 @@ import 'package:smart_dripper_frontend/utils/localization.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
+import 'pages/disease/index_page.dart';
+
 void main() async {
   AppLanguage appLanguage = AppLanguage();
   await appLanguage.fetchLocale();
@@ -41,7 +43,8 @@ class MyApp extends StatelessWidget {
           routes: {
             '/': (context) => HomePage(),
             '/profile': (context) => ProfilePage(),
-            '/manufacturers': (context) => ManufacturersIndexPage()
+            '/manufacturers': (context) => ManufacturersIndexPage(),
+            '/diseases': (context) => DiseasesIndexPage()
           },        
         );
       })

@@ -1,19 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_dripper_frontend/dto/Responses/manufacturer_response.dart';
-import 'package:smart_dripper_frontend/pages/manufacturer/form_page.dart';
+import 'package:smart_dripper_frontend/dto/Responses/disease_response.dart';
 import 'package:smart_dripper_frontend/utils/api_status.dart';
 import 'package:smart_dripper_frontend/utils/localization.dart';
-import 'package:smart_dripper_frontend/utils/services/manufacturer_service.dart';
+import 'package:smart_dripper_frontend/utils/services/disease_service.dart';
 
-class ManufacturersIndexPage extends StatefulWidget { 
+import 'form_page.dart';
+
+class DiseasesIndexPage extends StatefulWidget { 
   @override
-  _ManufacturersIndexState createState() => _ManufacturersIndexState();
+  _DiseasesIndexState createState() => _DiseasesIndexState();
 }
 
-class _ManufacturersIndexState extends State<ManufacturersIndexPage> {
+class _DiseasesIndexState extends State<DiseasesIndexPage> {
 
-  List<ManufacturerResponse> manufacturers;
+  List<DiseaseResponse> diseases;
 
   @override
   void initState() {
@@ -22,9 +23,9 @@ class _ManufacturersIndexState extends State<ManufacturersIndexPage> {
   }
 
   void _getElements() {
-    getAllManufacturers().then((value) {
+    getAllDiseases().then((value) {
       setState(() {
-        manufacturers = value;
+        diseases = value;
       });
     });
   }
@@ -41,7 +42,7 @@ class _ManufacturersIndexState extends State<ManufacturersIndexPage> {
   void _deleteElement(String id) async {
     var result;
     try {
-      await deleteManufacturer(id).then((value) => result = value);
+      await deleteDisease(id).then((value) => result = value);
 
       if (result == ApiStatus.success) {
         _getElements();
@@ -54,7 +55,7 @@ class _ManufacturersIndexState extends State<ManufacturersIndexPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (manufacturers == null) {
+    if (diseases == null) {
       return Center(
         child: Container(
           width: 50,
@@ -65,7 +66,7 @@ class _ManufacturersIndexState extends State<ManufacturersIndexPage> {
     } else {
       return Scaffold(
         appBar: AppBar(
-          title: Text(AppLocalization.of(context).translate('manufacturer_label')),                          
+          title: Text(AppLocalization.of(context).translate('disease_label')),                          
         ),
         body: Center(
           child: Column(
@@ -74,7 +75,7 @@ class _ManufacturersIndexState extends State<ManufacturersIndexPage> {
             children: <Widget>[
               Center(
                 child: Text(
-                  AppLocalization.of(context).translate('manufacturers_list_label'),
+                  AppLocalization.of(context).translate('diseases_list_label'),
                   style: Theme.of(context).textTheme.headline3
                 ),
               ), 
@@ -86,7 +87,7 @@ class _ManufacturersIndexState extends State<ManufacturersIndexPage> {
                   ),
                   onPressed: () => {
                     showDialog(context: context, builder: (BuildContext context) {                                  
-                      return ManufacturerFormPage(new ManufacturerResponse("", "", ""));
+                      return DiseaseFormPage(new DiseaseResponse("", "", "", ""));
                     }).then((value) => _getElements())
                   },
                 ),
@@ -97,9 +98,9 @@ class _ManufacturersIndexState extends State<ManufacturersIndexPage> {
                   height: 1100,
                   width: 500,
                   child: new ListView.builder(
-                    itemCount: manufacturers.length,
+                    itemCount: diseases.length,
                     itemBuilder: (context, index) {
-                      var element = manufacturers[index];
+                      var element = diseases[index];
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
@@ -114,15 +115,16 @@ class _ManufacturersIndexState extends State<ManufacturersIndexPage> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(AppLocalization.of(context).translate('name_title') + ': ' + element.getName(), style: TextStyle(fontSize: 20),),
-                                  Text(AppLocalization.of(context).translate('country') + ': ' + element.getCountry()),
+                                  Text(AppLocalization.of(context).translate('name_title') + ': ' + element.title, style: TextStyle(fontSize: 20),),
+                                  Text(AppLocalization.of(context).translate('symptom_ua') + ': ' + element.symptomUa),
+                                  Text(AppLocalization.of(context).translate('symptom_uk') + ': ' + element.symptomUk),
                                 ],
                               ),
                               IconButton(
                                 icon: Icon(Icons.edit),
                                 onPressed: () => {
                                   showDialog(context: context, builder: (BuildContext context) {                                  
-                                    return ManufacturerFormPage(element);
+                                    return DiseaseFormPage(element);
                                   }).then((value) => _getElements())                                  
                                 },
                                 hoverColor: Colors.green,

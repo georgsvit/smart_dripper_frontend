@@ -26,7 +26,12 @@
     "save_label": "Save",
     "delete_text": "Are you really want to delete this element?\nAll data will be removed",
     "country": "Country",
-    "name_title": "Name"
-    
+    "name_title": "Title",
+    "symptom_ua": "Symptom (in Ukrainian)",
+    "symptom_uk": "Symptom (in English)",
+    "symptom": "Symptom",
+    "disease_label": "Diseases",
+    "disease_description": "Look and edit information about diseases",
+    "diseases_list_label": "List of diseases"
 
 }

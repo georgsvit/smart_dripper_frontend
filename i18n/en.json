@@ -30,8 +30,22 @@
     "symptom_ua": "Symptom (in Ukrainian)",
     "symptom_uk": "Symptom (in English)",
     "symptom": "Symptom",
-    "disease_label": "Diseases",
+    "disease_label": "Disease",
+    "diseases_label": "Diseases",
     "disease_description": "Look and edit information about diseases",
-    "diseases_list_label": "List of diseases"
+    "diseases_list_label": "List of diseases",
+    "description_label": "Description",
+    "max_temp": "Temperature (max)",
+    "min_temp": "Temperature (min)",
+    "max_pulse": "Pulse (max)",
+    "min_pulse": "Pulse (min)",
+    "max_bp": "Blood pressure (max)",
+    "min_bp": "Blood pressure (min)",
+    "bp_measurement_label": "mmHg",
+    "pulse_measurement_label": "bpm",
+    "medical_protocol_label": "Medical protocol",
+    "medical_protocols_label": "Medical protocols",
+    "medical_protocols_list_label": "List of medical protocols",
+    "medical_protocol_description": "Look and edit information about medical protocols"
 
 }

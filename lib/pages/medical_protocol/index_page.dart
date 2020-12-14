@@ -1,20 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_dripper_frontend/dto/Responses/disease_response.dart';
+import 'package:smart_dripper_frontend/dto/Responses/medical_protocol_response.dart';
 import 'package:smart_dripper_frontend/utils/api_status.dart';
 import 'package:smart_dripper_frontend/utils/localization.dart';
-import 'package:smart_dripper_frontend/utils/services/disease_service.dart';
+import 'package:smart_dripper_frontend/utils/services/medical_protocol_service.dart';
 
 import 'form_page.dart';
 
-class DiseasesIndexPage extends StatefulWidget { 
+class MedicalProtocolsIndexPage extends StatefulWidget { 
   @override
-  _DiseasesIndexState createState() => _DiseasesIndexState();
+  _MedicalProtocolsIndexState createState() => _MedicalProtocolsIndexState();
 }
 
-class _DiseasesIndexState extends State<DiseasesIndexPage> {
+class _MedicalProtocolsIndexState extends State<MedicalProtocolsIndexPage> {
 
-  List<DiseaseResponse> diseases;
+  List<MedicalProtocolResponse> medicalprotocols;
 
   @override
   void initState() {
@@ -23,9 +23,9 @@ class _DiseasesIndexState extends State<DiseasesIndexPage> {
   }
 
   void _getElements() {
-    getAllDiseases().then((value) {
+    getAllMedicalProtocols().then((value) {
       setState(() {
-        diseases = value;
+        medicalprotocols = value;
       });
     });
   }
@@ -42,7 +42,7 @@ class _DiseasesIndexState extends State<DiseasesIndexPage> {
   void _deleteElement(String id) async {
     var result;
     try {
-      await deleteDisease(id).then((value) => result = value);
+      await deleteMedicalProtocol(id).then((value) => result = value);
 
       if (result == ApiStatus.success) {
         _getElements();
@@ -55,7 +55,7 @@ class _DiseasesIndexState extends State<DiseasesIndexPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (diseases == null) {
+    if (medicalprotocols == null) {
       return Center(
         child: Container(
           width: 50,
@@ -66,7 +66,7 @@ class _DiseasesIndexState extends State<DiseasesIndexPage> {
     } else {
       return Scaffold(
         appBar: AppBar(
-          title: Text(AppLocalization.of(context).translate('diseases_label')),                          
+          title: Text(AppLocalization.of(context).translate('medical_protocols_label')),                          
         ),
         body: Center(
           child: Column(
@@ -75,7 +75,7 @@ class _DiseasesIndexState extends State<DiseasesIndexPage> {
             children: <Widget>[
               Center(
                 child: Text(
-                  AppLocalization.of(context).translate('diseases_list_label'),
+                  AppLocalization.of(context).translate('medical_protocols_list_label'),
                   style: Theme.of(context).textTheme.headline3
                 ),
               ), 
@@ -87,7 +87,7 @@ class _DiseasesIndexState extends State<DiseasesIndexPage> {
                   ),
                   onPressed: () => {
                     showDialog(context: context, builder: (BuildContext context) {                                  
-                      return DiseaseFormPage(new DiseaseResponse("", "", "", ""));
+                      return MedicalProtocolFormPage(new MedicalProtocolResponse("", "", "", "" , 0, 0, 0, 0, 0, 0, null));
                     }).then((value) => _getElements())
                   },
                 ),
@@ -98,9 +98,9 @@ class _DiseasesIndexState extends State<DiseasesIndexPage> {
                   height: 1100,
                   width: 500,
                   child: new ListView.builder(
-                    itemCount: diseases.length,
+                    itemCount: medicalprotocols.length,
                     itemBuilder: (context, index) {
-                      var element = diseases[index];
+                      var element = medicalprotocols[index];
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
@@ -116,15 +116,21 @@ class _DiseasesIndexState extends State<DiseasesIndexPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(AppLocalization.of(context).translate('name_title') + ': ' + element.title, style: TextStyle(fontSize: 20),),
-                                  Text(AppLocalization.of(context).translate('symptom_ua') + ': ' + element.symptomUa),
-                                  Text(AppLocalization.of(context).translate('symptom_uk') + ': ' + element.symptomUk),
+                                  Text(AppLocalization.of(context).translate('description_label') + ': ' + element.description),
+                                  Text(AppLocalization.of(context).translate('max_temp') + ': ' + element.maxTemp.toString() + ' ℃'),
+                                  Text(AppLocalization.of(context).translate('min_temp') + ': ' + element.minTemp.toString() + ' ℃'),
+                                  Text(AppLocalization.of(context).translate('max_pulse') + ': ' + element.maxPulse.toString() + ' ' + AppLocalization.of(context).translate('pulse_measurement_label')),
+                                  Text(AppLocalization.of(context).translate('min_pulse') + ': ' + element.minPulse.toString() + ' ' + AppLocalization.of(context).translate('pulse_measurement_label')),
+                                  Text(AppLocalization.of(context).translate('max_bp') + ': ' + element.maxBloodPressure.toString() + ' ' + AppLocalization.of(context).translate('bp_measurement_label')),
+                                  Text(AppLocalization.of(context).translate('min_bp') + ': ' + element.minBloodPressure.toString() + ' ' + AppLocalization.of(context).translate('bp_measurement_label')),
+                                  Text(AppLocalization.of(context).translate('disease_label') + ': ' + element.disease.title),                                  
                                 ],
                               ),
                               IconButton(
                                 icon: Icon(Icons.edit),
                                 onPressed: () => {
                                   showDialog(context: context, builder: (BuildContext context) {                                  
-                                    return DiseaseFormPage(element);
+                                    return MedicalProtocolFormPage(element);
                                   }).then((value) => _getElements())                                  
                                 },
                                 hoverColor: Colors.green,

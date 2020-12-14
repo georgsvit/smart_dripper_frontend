@@ -31,6 +31,21 @@
     "symptom_uk": "Симптом (Англійською)",
     "symptom": "Сиптом",
     "disease_label": "Хвороба",
+    "diseases_label": "Хвороби",
     "disease_description": "Переглядайте та редагуйте інформацію про хвороби",
-    "diseases_list_label": "Список хвороб"
+    "diseases_list_label": "Список хвороб",
+    "description_label": "Description",
+    "max_temp": "Температура (max)",
+    "min_temp": "Температура (min)",
+    "max_pulse": "Пульс (max)",
+    "min_pulse": "Пульс (min)",
+    "max_bp": "Кров'яний тиск (max)",
+    "min_bp": "Кров'яний тиск (min)",
+    "bp_measurement_label": "мм рт.ст.",
+    "pulse_measurement_label": "уд/хв",
+    "medical_protocol_label": "Медичний протокол",
+    "medical_protocols_label": "Медичні протоколи",
+    "medical_protocols_list_label": "Список медичних протоколів",
+    "medical_protocol_description": "Переглядайте та редагуйте інформацію про медичні протоколи"
+    
 }

@@ -5,6 +5,7 @@ class Routes {
   static const String doctors = baseURL + "doctors/";
   static const String manufacturers = baseURL + 'manufacturers/';
   static const String diseases = baseURL + 'diseases/';
+  static const String medicalprotocols = baseURL + 'medicalprotocols/';
 
   static const String doctorsLogin = doctors + "login";
   static const String doctorsRegister = doctors + "register";

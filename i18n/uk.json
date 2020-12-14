@@ -46,6 +46,12 @@
     "medical_protocol_label": "Медичний протокол",
     "medical_protocols_label": "Медичні протоколи",
     "medical_protocols_list_label": "Список медичних протоколів",
-    "medical_protocol_description": "Переглядайте та редагуйте інформацію про медичні протоколи"
+    "medical_protocol_description": "Переглядайте та редагуйте інформацію про медичні протоколи",
+    "amount_in_pack_label": "Кількість в упаковці",
+    "lack_label": "Залишок",
+    "medicament_label": "Препарат",
+    "medicaments_label": "Препарати",
+    "medicaments_list_label": "Список препаратів",
+    "medicament_description": "Переглядайте та редагуйте інформацію про препарати"
     
 }

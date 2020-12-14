@@ -18,4 +18,8 @@ class MedicalProtocolResponse {
   factory MedicalProtocolResponse.fromJson(Map<String, dynamic> json) {
     return new MedicalProtocolResponse(json['id'], json['diseaseId'], json['title'], json['description'], json['maxTemp'], json['minTemp'], json['maxPulse'], json['minPulse'], json['maxBloodPressure'], json['minBloodPressure'], DiseaseResponse.fromJson(json['disease']));
   }
+
+  factory MedicalProtocolResponse.fromJsonSimplified(Map<String, dynamic> json) {
+    return new MedicalProtocolResponse(json['id'], json['diseaseId'], json['title'], json['description'], json['maxTemp'], json['minTemp'], json['maxPulse'], json['minPulse'], json['maxBloodPressure'], json['minBloodPressure'], null);
+  }
 }

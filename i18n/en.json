@@ -46,6 +46,12 @@
     "medical_protocol_label": "Medical protocol",
     "medical_protocols_label": "Medical protocols",
     "medical_protocols_list_label": "List of medical protocols",
-    "medical_protocol_description": "Look and edit information about medical protocols"
-
+    "medical_protocol_description": "Look and edit information about medical protocols",
+    "amount_in_pack_label": "Amount in a pack",
+    "lack_label": "Lack",
+    "medicament_label": "Medicament",
+    "medicaments_label": "Medicaments",
+    "medicaments_list_label": "List of medicaments",
+    "medicament_description": "Look and edit information about medicaments"
+    
 }

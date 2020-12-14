@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_dripper_frontend/dialogs/login_dialog.dart';
 import 'package:smart_dripper_frontend/pages/manufacturer/index_page.dart';
 import 'package:smart_dripper_frontend/pages/medical_protocol/index_page.dart';
+import 'package:smart_dripper_frontend/pages/medicament/index_page.dart';
 import 'package:smart_dripper_frontend/pages/profile_page.dart';
 import 'package:smart_dripper_frontend/utils/app_language.dart';
 import 'package:smart_dripper_frontend/utils/localization.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
             '/manufacturers': (context) => ManufacturersIndexPage(),
             '/diseases': (context) => DiseasesIndexPage(),
             '/medicalprotocols': (context) => MedicalProtocolsIndexPage(),
+            '/medicaments': (context) => MedicamentsIndexPage(),
           },        
         );
       })

@@ -52,6 +52,12 @@
     "medicament_label": "Препарат",
     "medicaments_label": "Препарати",
     "medicaments_list_label": "Список препаратів",
-    "medicament_description": "Переглядайте та редагуйте інформацію про препарати"
+    "medicament_description": "Переглядайте та редагуйте інформацію про препарати",
+    "comment_label": "Коментар",
+    "dob": "Дата народження",
+    "patient_label": "Пацієнт",
+    "patients_label": "Пацієнти",
+    "patients_list_label": "Список пацієнтів",
+    "patient_description": "Переглядайте та редагуйте інформацію про пацієнтів"
     
 }

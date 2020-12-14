@@ -52,6 +52,12 @@
     "medicament_label": "Medicament",
     "medicaments_label": "Medicaments",
     "medicaments_list_label": "List of medicaments",
-    "medicament_description": "Look and edit information about medicaments"
+    "medicament_description": "Look and edit information about medicaments",
+    "comment_label": "Comment",
+    "dob": "Date of birth",
+    "patient_label": "Patient",
+    "patients_label": "Patients",
+    "patients_list_label": "List of patients",
+    "patient_description": "Look and edit information about patients"
     
 }

@@ -5,6 +5,7 @@ import 'package:smart_dripper_frontend/pages/medical_protocol/index_page.dart';
 import 'package:smart_dripper_frontend/pages/medicament/index_page.dart';
 import 'package:smart_dripper_frontend/pages/patient/index_page.dart';
 import 'package:smart_dripper_frontend/pages/profile_page.dart';
+import 'package:smart_dripper_frontend/pages/user/index_page.dart';
 import 'package:smart_dripper_frontend/utils/app_language.dart';
 import 'package:smart_dripper_frontend/utils/localization.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
             '/medicalprotocols': (context) => MedicalProtocolsIndexPage(),
             '/medicaments': (context) => MedicamentsIndexPage(),
             '/patients': (context) => PatientsIndexPage(),
+            '/users': (context) => UsersIndexPage(),
           },        
         );
       })

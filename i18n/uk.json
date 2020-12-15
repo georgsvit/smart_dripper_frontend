@@ -15,6 +15,7 @@
     "role": "Роль",
     "doctor_label": "Доктор",
     "admin_label": "Адміністратор",
+    "nurse_label": "Медична сестра",
     "login": "Увійти",
     "password": "Пароль",
     "manufacturer_label": "Виробники",
@@ -58,6 +59,10 @@
     "patient_label": "Пацієнт",
     "patients_label": "Пацієнти",
     "patients_list_label": "Список пацієнтів",
-    "patient_description": "Переглядайте та редагуйте інформацію про пацієнтів"
+    "patient_description": "Переглядайте та редагуйте інформацію про пацієнтів",
+    "user_label": "Користувач",
+    "users_label": "Користувачі",
+    "users_list_label": "Список користувачів",
+    "user_description": "Переглядайте та редагуйте інформацію про користувачів"
     
 }

@@ -15,6 +15,7 @@
     "role": "Role",
     "doctor_label": "Doctor",
     "admin_label": "Admin",
+    "nurse_label": "Nurse",
     "login": "Login",
     "password": "Password",
     "manufacturer_label": "Manufacturers",
@@ -58,6 +59,10 @@
     "patient_label": "Patient",
     "patients_label": "Patients",
     "patients_list_label": "List of patients",
-    "patient_description": "Look and edit information about patients"
-    
+    "patient_description": "Look and edit information about patients",
+    "user_label": "User",
+    "users_label": "Users",
+    "users_list_label": "List of users",
+    "user_description": "Look and edit information about users"
+
 }

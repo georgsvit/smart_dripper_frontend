@@ -10,6 +10,7 @@ Future saveToken(String token) async {
 Future saveUserData(DetailedUser user) async {
   final prefs = await SharedPreferences.getInstance();
 
+  prefs.setString('user_id', user.id);
   prefs.setString('user_name', user.name);
   prefs.setString('user_surname', user.surname);
   prefs.setString('user_role', user.role);
@@ -25,9 +26,10 @@ Future<DetailedUser> fetchUser() async {
   final prefs = await SharedPreferences.getInstance();
 
   return DetailedUser(
+    prefs.getString('user_id'),
     prefs.getString('user_name'),
     prefs.getString('user_surname'),
-    prefs.getString('user_role')
+    prefs.getString('user_role'),
   );
 }
 

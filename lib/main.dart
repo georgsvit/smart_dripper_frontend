@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_dripper_frontend/dialogs/login_dialog.dart';
+import 'package:smart_dripper_frontend/pages/appointment/index_page.dart';
 import 'package:smart_dripper_frontend/pages/manufacturer/index_page.dart';
 import 'package:smart_dripper_frontend/pages/medical_protocol/index_page.dart';
 import 'package:smart_dripper_frontend/pages/medicament/index_page.dart';
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
             '/medicaments': (context) => MedicamentsIndexPage(),
             '/patients': (context) => PatientsIndexPage(),
             '/users': (context) => UsersIndexPage(),
+            '/appointments': (context) => AppointmentsIndexPage(),
           },        
         );
       })

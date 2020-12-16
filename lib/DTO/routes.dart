@@ -9,6 +9,7 @@ class Routes {
   static const String medicaments = baseURL + 'medicaments/';
   static const String patients = baseURL + 'patients/';
   static const String users = baseURL + 'users/';
+  static const String appointments = baseURL + 'appointments/';
 
   static const String doctorsLogin = doctors + "login";
   static const String doctorsRegister = doctors + "register";

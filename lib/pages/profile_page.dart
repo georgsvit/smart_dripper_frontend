@@ -100,6 +100,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ActionWidget(AppLocalization.of(context).translate('medicaments_label'), AppLocalization.of(context).translate('medicament_description'), '/medicaments'),                
               ActionWidget(AppLocalization.of(context).translate('patients_label'), AppLocalization.of(context).translate('patient_description'), '/patients'),                
               ActionWidget(AppLocalization.of(context).translate('users_label'), AppLocalization.of(context).translate('user_description'), '/users'),                
+              ActionWidget(AppLocalization.of(context).translate('appointments_label'), AppLocalization.of(context).translate('appointment_description'), '/appointments'),                
               ActionWidget('Manufacturer', 'Look and edit information about medicaments manufacturers', '/'),                
               ActionWidget('Manufacturer', 'Look and edit information about medicaments manufacturers', '/'),                
             ],

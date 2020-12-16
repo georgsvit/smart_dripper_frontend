@@ -63,6 +63,11 @@
     "user_label": "User",
     "users_label": "Users",
     "users_list_label": "List of users",
-    "user_description": "Look and edit information about users"
+    "user_description": "Look and edit information about users",
+    "date_label": "Date",
+    "appointment_label": "Appointment",
+    "appointments_label": "Appointments",
+    "appointments_list_label": "List of appointments",
+    "appointment_description": "Look and edit information about appointments"
 
 }

@@ -7,6 +7,10 @@ class PatientResponse {
 
   PatientResponse(this.id, this.name, this.surname, this.dob, this.comment);
 
+  factory PatientResponse.fromJsonSimplified(Map<String, dynamic> json) {
+    return new PatientResponse(json['id'], json['name'], json['surname'], DateTime.now(), "");
+  }
+
   factory PatientResponse.fromJson(Map<String, dynamic> json) {
     return new PatientResponse(json['id'], json['name'], json['surname'], DateTime.parse(json['dob']), json['comment']);
   }

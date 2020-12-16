@@ -21,7 +21,7 @@ Future<DoctorResponse> loginDoctor(String login, String password) async {
   if (response.statusCode == 200) {
     var doctor = DoctorResponse.fromJson(jsonDecode(response.body));
     saveToken(doctor.token);
-    saveUserData(new DetailedUser(doctor.name, doctor.surname, doctor.role));
+    saveUserData(new DetailedUser(doctor.id, doctor.name, doctor.surname, doctor.role));
     return doctor;
   } else {
     throw Exception(jsonDecode(response.body)['message']);
@@ -63,7 +63,7 @@ Future<AdminResponse> loginAdmin(String login, String password) async {
   if (response.statusCode == 200) {
     var admin = AdminResponse.fromJson(jsonDecode(response.body));
     saveToken(admin.token);
-    saveUserData(new DetailedUser(admin.name, admin.surname, admin.role));
+    saveUserData(new DetailedUser(admin.id, admin.name, admin.surname, admin.role));
     return admin;
   } else {
     throw Exception(jsonDecode(response.body)['message']);

@@ -14,31 +14,37 @@ class ActionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+      padding: EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(width: 1),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(title, style: TextStyle(fontSize: 20),),
-              Text(description),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: TextStyle(fontSize: 20),),
+                  Text(description),
+                ],
+              ),
+              IconButton(
+                icon: Icon(Icons.arrow_forward),
+                onPressed: () => {
+                  Navigator.of(context).pushNamed(path)
+                },
+                hoverColor: Colors.green,
+                splashRadius: 20,
+              )
             ],
           ),
-          IconButton(
-            icon: Icon(Icons.arrow_forward),
-            onPressed: () => {
-              //getManufacturer("157f9f06-5128-42b4-b916-94554fef15ef"),
-              //createManufacturer(new ManufacturerResponse("", "Medical Company #2", "Ukraine")),
-              //deleteManufacturer("310f3c22-d08c-406c-aaef-c257f6bec480"),
-              //editManufacturer("157f9f06-5128-42b4-b916-94554fef15ef", new ManufacturerResponse("", "Medical Company #4", "Ukraine")),
-              Navigator.of(context).pushNamed(path)
-            },
-            hoverColor: Colors.green,
-            splashRadius: 20,
-          )
-        ],
+        ),
       ),
     );
   }

@@ -68,6 +68,7 @@
     "appointment_label": "Медичні призначення",
     "appointments_label": "Медичні призначення",
     "appointments_list_label": "Список медичних призачень",
-    "appointment_description": "Переглядайте та редагуйте інформацію про медичні призначення"
+    "appointment_description": "Переглядайте та редагуйте інформацію про медичні призначення",
+    "completed_label": "Виконано"
     
 }

@@ -131,7 +131,7 @@ class _AppointmentsIndexState extends State<AppointmentsIndexPage> {
                                   if (role == 'admin')
                                   Text(AppLocalization.of(context).translate('doctor_label') + ': ' + element.doctor.name + ' ' + element.doctor.surname),
                                   if (role == 'admin')
-                                  Text(AppLocalization.of(context).translate('completed_label') + ': ' + element.isDone.toString()),
+                                  Text(AppLocalization.of(context).translate('completed_label') + ': ' + (element.isDone ? AppLocalization.of(context).translate('yes_option') : AppLocalization.of(context).translate('no_option'))),
                                   Text(AppLocalization.of(context).translate('date_label') + ': ${element.date.day.toString()}/${element.date.month}/${element.date.year}'),
                                 ],
                               ),

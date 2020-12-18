@@ -68,6 +68,7 @@
     "appointment_label": "Appointment",
     "appointments_label": "Appointments",
     "appointments_list_label": "List of appointments",
-    "appointment_description": "Look and edit information about appointments"
+    "appointment_description": "Look and edit information about appointments",
+    "completed_label": "Completed"
 
 }
